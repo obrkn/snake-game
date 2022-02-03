@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>snake game</title>
 </head>
 
 <body>
@@ -82,7 +82,7 @@
     }
 
     init();
-    setInterval(loop, 1000 / 10);
+    setInterval(loop, 1000 / 8);
 
     document.addEventListener('keydown', e => {
       switch (e.key) {
@@ -101,8 +101,27 @@
       }
     })
 
-    document.addEventListener('keydown', e => { });
+    const left = () => {
+      snake.dx = -1; snake.dy = 0;
+    }
+    const right = () => {
+          snake.dx = 1; snake.dy = 0;
+    }
+    const up = () => {
+          snake.dx = 0; snake.dy = -1;
+    }
+    const down = () => {
+          snake.dx = 0; snake.dy = 1;
+    }
   </script>
+  <div style="text-align: center; margin-top: 8px;">
+    <button onclick="up();"><image src="./mark_arrow_up.png" width=64 height=64 /></button>
+    <div>
+      <button onclick="left();"><image src="./mark_arrow_left.png" width=64 height=64 /></button>
+      <button style="margin-left: 100px;" onclick="right();"><image src="./mark_arrow_right.png" width=64 height=64 /></button>
+    </div>
+    <button onclick="down();"><image src="./mark_arrow_down.png" width=64 height=64 /></button>
+  </div>
 </body>
 
 </html>
