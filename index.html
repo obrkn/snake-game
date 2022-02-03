@@ -9,12 +9,16 @@
 </head>
 
 <body>
+  <div style="margin: 8px; text-align: center;">
+    <span>スコア： <span id="score">0</span></span>
+    <span style="margin-left: 8px;">最大スコア： <span id="max-score">0</span></span>
+  </div>
   <script>
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
 
-    canvas.width = 300;
-    canvas.height = 300;
+    canvas.width = 280;
+    canvas.height = 280;
 
     canvas.setAttribute('style', 'display: block; margin: auto; background-color: #aaa')
 
@@ -29,6 +33,7 @@
       dx: 1,
       dy: 0,
       tail: null,
+      maxTail: null,
 
       update: function () {
         this.body.push({ x: this.x, y: this.y })
@@ -54,9 +59,14 @@
     }
 
     const init = () => {
+      document.getElementById('score').innerText = 0
+      if (snake.tail > snake.maxTail) {
+        snake.maxTail = snake.tail;
+        document.getElementById('max-score').innerText = snake.tail
+      }
       snake.x = STAGE / 2;
       snake.y = STAGE / 2;
-      snake.tail = 4;
+      snake.tail = 0;
       snake.body = [];
 
       item.x = Math.floor(Math.random() * STAGE);
@@ -67,22 +77,22 @@
       snake.update();
       item.update();
 
-      if (snake.x < 0) snake.x = STAGE - 1;
-      if (snake.y < 0) snake.y = STAGE - 1;
-      if (snake.x > STAGE) snake.x = 0;
-      if (snake.y > STAGE) snake.y = 0;
+      if (snake.x < 0) init();
+      if (snake.y < 0) init();
+      if (snake.x >= STAGE) init();
+      if (snake.y >= STAGE) init();
 
 
       if (snake.x === item.x && snake.y === item.y) {
         snake.tail++;
         item.x = Math.floor(Math.random() * STAGE);
         item.y = Math.floor(Math.random() * STAGE);
-
+        document.getElementById('score').innerText = snake.tail
       }
     }
 
     init();
-    setInterval(loop, 1000 / 8);
+    setInterval(loop, 1000 / 4);
 
     document.addEventListener('keydown', e => {
       switch (e.key) {
