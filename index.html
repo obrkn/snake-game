@@ -13,8 +13,8 @@
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
 
-    canvas.width = 400;
-    canvas.height = 400;
+    canvas.width = 300;
+    canvas.height = 300;
 
     canvas.setAttribute('style', 'display: block; margin: auto; background-color: #aaa')
 
@@ -105,22 +105,28 @@
       snake.dx = -1; snake.dy = 0;
     }
     const right = () => {
-          snake.dx = 1; snake.dy = 0;
+      snake.dx = 1; snake.dy = 0;
     }
     const up = () => {
-          snake.dx = 0; snake.dy = -1;
+      snake.dx = 0; snake.dy = -1;
     }
     const down = () => {
-          snake.dx = 0; snake.dy = 1;
+      snake.dx = 0; snake.dy = 1;
     }
   </script>
   <div style="text-align: center; margin-top: 8px;">
-    <button onclick="up();"><image src="./mark_arrow_up.png" width=64 height=64 /></button>
-    <div>
-      <button onclick="left();"><image src="./mark_arrow_left.png" width=64 height=64 /></button>
-      <button style="margin-left: 100px;" onclick="right();"><image src="./mark_arrow_right.png" width=64 height=64 /></button>
-    </div>
-    <button onclick="down();"><image src="./mark_arrow_down.png" width=64 height=64 /></button>
+    <button onclick="left();">
+      <image src="./mark_arrow_left.png" width=64 height=64 />
+    </button>
+    <button onclick="up();">
+      <image src="./mark_arrow_up.png" width=64 height=64 />
+    </button>
+    <button onclick="down();">
+      <image src="./mark_arrow_down.png" width=64 height=64 />
+    </button>
+    <button onclick="right();">
+      <image src="./mark_arrow_right.png" width=64 height=64 />
+    </button>
   </div>
 </body>
 
