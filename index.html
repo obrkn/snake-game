@@ -112,30 +112,37 @@
     })
 
     const left = () => {
+      if (snake.dx == 1 && snake.dy == 0) { return }
       snake.dx = -1; snake.dy = 0;
     }
     const right = () => {
+      if (snake.dx == -1 && snake.dy == 0) { return }
       snake.dx = 1; snake.dy = 0;
     }
     const up = () => {
+      if (snake.dx == 0 && snake.dy == 1) { return }
       snake.dx = 0; snake.dy = -1;
     }
     const down = () => {
+      if (snake.dx == 0 && snake.dy == -1) { return }
       snake.dx = 0; snake.dy = 1;
     }
   </script>
   <div style="text-align: center; margin-top: 8px;">
-    <button onclick="left();">
-      <image src="./mark_arrow_left.png" width=64 height=64 />
-    </button>
     <button onclick="up();">
       <image src="./mark_arrow_up.png" width=64 height=64 />
     </button>
+    <div style="display: flex; justify-content: center;">
+      <button onclick="left();">
+        <image src="./mark_arrow_left.png" width=64 height=64 />
+      </button>
+      <div style="width: 78px;"></div>
+      <button onclick="right();">
+        <image src="./mark_arrow_right.png" width=64 height=64 />
+      </button>
+    </div>
     <button onclick="down();">
       <image src="./mark_arrow_down.png" width=64 height=64 />
-    </button>
-    <button onclick="right();">
-      <image src="./mark_arrow_right.png" width=64 height=64 />
     </button>
   </div>
 </body>
